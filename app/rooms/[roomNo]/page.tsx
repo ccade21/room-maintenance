@@ -29,17 +29,9 @@ export default function RoomDetailPage() {
   const loadAll = async () => {
     setLoading(true);
 
-  const {
-     data: { session },
-  } = await supabase.auth.getSession();
-
-  const requesterEmail = session?.user?.email ?? "";
-
-  const requesterName = profile?.name?.trim()
-    ? profile.name.trim()
-    : requesterEmail
-    ? requesterEmail.split("@")[0]
-    : "로그인 사용자";
+    const {
+      data: { session },
+    } = await supabase.auth.getSession();
 
     setSessionUserId(session?.user?.id ?? null);
 
@@ -119,13 +111,19 @@ export default function RoomDetailPage() {
         issueImageUrl = await uploadImage(issueImage, "issue", sessionUserId);
       }
 
-      const requesterName = profile?.name
-         ? profile.name
-         : profile?.email
-         ? profile.email.split("@")[0]
-         : "로그인 사용자";
+      const {
+        data: { session },
+      } = await supabase.auth.getSession();
 
-     const { error } = await supabase.from("maintenance_requests").insert({
+      const requesterEmail = session?.user?.email ?? "";
+
+      const requesterName = profile?.name?.trim()
+        ? profile.name.trim()
+        : requesterEmail
+        ? requesterEmail.split("@")[0]
+        : "로그인 사용자";
+
+      const { error } = await supabase.from("maintenance_requests").insert({
         team: room.team,
         room_no: room.room_no,
         status: "접수",
@@ -133,7 +131,7 @@ export default function RoomDetailPage() {
         issue_image_url: issueImageUrl,
         requester_name: requesterName,
         requester_user_id: sessionUserId,
-    });
+      });
 
       if (error) {
         throw new Error(error.message);
@@ -169,7 +167,12 @@ export default function RoomDetailPage() {
           <span>팀: {room.team}</span>
           <span>청정도: {room.clean_class || "-"}</span>
           <span>
-            현재 상태: {latestStatus ? <StatusBadge status={latestStatus} /> : "접수 이력 없음"}
+            현재 상태:{" "}
+            {latestStatus ? (
+              <StatusBadge status={latestStatus} />
+            ) : (
+              "접수 이력 없음"
+            )}
           </span>
         </div>
       </div>
@@ -201,7 +204,9 @@ export default function RoomDetailPage() {
             </button>
           </form>
         ) : (
-          <p className="muted">로그인 후 접수 가능해요. 비로그인 사용자는 조회만 가능해요.</p>
+          <p className="muted">
+            로그인 후 접수 가능해요. 비로그인 사용자는 조회만 가능해요.
+          </p>
         )}
       </div>
 
@@ -223,14 +228,23 @@ export default function RoomDetailPage() {
                 <p className="history-issue">{req.issue}</p>
 
                 <div className="history-meta">
-                  <span>접수자: {req.requester_name}</span>
+                  <span>
+                    접수자:{" "}
+                    {req.requester_name?.includes("@")
+                      ? req.requester_name.split("@")[0]
+                      : req.requester_name}
+                  </span>
                 </div>
 
                 <div className="history-images">
                   {req.issue_image_url && (
                     <div>
                       <p className="muted small">고장 사진</p>
-                      <a href={req.issue_image_url} target="_blank">
+                      <a
+                        href={req.issue_image_url}
+                        target="_blank"
+                        rel="noreferrer"
+                      >
                         <img
                           src={req.issue_image_url}
                           alt="고장 사진"
@@ -243,7 +257,11 @@ export default function RoomDetailPage() {
                   {req.complete_image_url && (
                     <div>
                       <p className="muted small">완료 사진</p>
-                      <a href={req.complete_image_url} target="_blank">
+                      <a
+                        href={req.complete_image_url}
+                        target="_blank"
+                        rel="noreferrer"
+                      >
                         <img
                           src={req.complete_image_url}
                           alt="완료 사진"
