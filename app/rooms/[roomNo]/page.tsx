@@ -29,9 +29,17 @@ export default function RoomDetailPage() {
   const loadAll = async () => {
     setLoading(true);
 
-    const {
-      data: { session },
-    } = await supabase.auth.getSession();
+  const {
+     data: { session },
+  } = await supabase.auth.getSession();
+
+  const requesterEmail = session?.user?.email ?? "";
+
+  const requesterName = profile?.name?.trim()
+    ? profile.name.trim()
+    : requesterEmail
+    ? requesterEmail.split("@")[0]
+    : "로그인 사용자";
 
     setSessionUserId(session?.user?.id ?? null);
 
@@ -117,7 +125,7 @@ export default function RoomDetailPage() {
          ? profile.email.split("@")[0]
          : "로그인 사용자";
 
-      const { error } = await supabase.from("maintenance_requests").insert({
+     const { error } = await supabase.from("maintenance_requests").insert({
         team: room.team,
         room_no: room.room_no,
         status: "접수",
@@ -125,7 +133,7 @@ export default function RoomDetailPage() {
         issue_image_url: issueImageUrl,
         requester_name: requesterName,
         requester_user_id: sessionUserId,
-      });
+    });
 
       if (error) {
         throw new Error(error.message);
