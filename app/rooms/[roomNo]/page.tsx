@@ -111,8 +111,11 @@ export default function RoomDetailPage() {
         issueImageUrl = await uploadImage(issueImage, "issue", sessionUserId);
       }
 
-      const requesterName =
-        profile?.name || profile?.email || "로그인 사용자";
+      const requesterName = profile?.name
+         ? profile.name
+         : profile?.email
+         ? profile.email.split("@")[0]
+         : "로그인 사용자";
 
       const { error } = await supabase.from("maintenance_requests").insert({
         team: room.team,
