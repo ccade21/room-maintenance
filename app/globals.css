@@ -421,4 +421,24 @@ body {
     grid-template-columns: 1fr;
     gap: 6px;
   }
+
+  .room-team-row {
+  margin-top: 2px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+
+.room-card-team {
+  font-size: 14px;
+  color: var(--sub);
+  line-height: 1.2;
+}
+
+.room-card-ahu {
+  font-size: 13px;
+  color: var(--sub);
+  white-space: nowrap;
+}
 }

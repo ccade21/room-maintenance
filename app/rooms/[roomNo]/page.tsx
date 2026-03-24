@@ -165,6 +165,7 @@ export default function RoomDetailPage() {
         <p className="muted">{room.name}</p>
         <div className="detail-meta">
             <span>팀: {room.team}</span>
+            <span>AHU No.: {room.ahu_no || "-"}</span>
             <span>청정도: {room.clean_class || "-"}</span>
             <span>온도: {room.temperature || "-"}</span>
             <span>습도: {room.humidity || "-"}</span>
