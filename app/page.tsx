@@ -21,8 +21,9 @@ export default function HomePage() {
       if (error) {
         alert(`룸 목록 조회 실패: ${error.message}`);
       } else {
-        setRooms(data || []);
+        setRooms((data || []) as Room[]);
       }
+
       setLoading(false);
     };
 
@@ -57,12 +58,12 @@ export default function HomePage() {
       {loading ? (
         <div className="card">불러오는 중...</div>
       ) : (
-            <div className="room-grid">
+        <div className="room-grid">
           {filteredRooms.map((room) => (
             <Link
               key={room.id}
               href={`/rooms/${encodeURIComponent(room.room_no)}`}
-              className="room-card compact-room-card"
+              className="room-card"
             >
               <div className="room-card-top">
                 <strong>{room.room_no}</strong>
@@ -70,11 +71,13 @@ export default function HomePage() {
               </div>
 
               <div className="room-card-name">{room.name}</div>
-              
-                <div className="room-meta-row">
-                  <div className="room-card-team">{room.team}</div>
-                  <div className="room-card-ahu">AHU No. {room.ahu_no || "-"}</div>
+
+              <div className="room-meta-row">
+                <div className="room-card-team">{room.team}</div>
+                <div className="room-card-ahu">
+                  AHU No. {room.ahu_no || "-"}
                 </div>
+              </div>
 
               <div className="room-spec-grid">
                 <div className="room-spec-col">
@@ -83,7 +86,7 @@ export default function HomePage() {
                   <div>AC/hr: {room.ac_hr || "-"}</div>
                 </div>
 
-                <div className="room-spec-col">
+                <div className="room-spec-col room-spec-col-right">
                   <div>면적: {room.area || "-"}</div>
                   <div>높이: {room.height || "-"}</div>
                   <div>체적: {room.volume || "-"}</div>
