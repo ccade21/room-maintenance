@@ -106,19 +106,11 @@ body {
   box-shadow: 0 6px 20px rgba(15, 23, 42, 0.04);
 }
 
-.room-extra {
-  margin-top: 10px;
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  font-size: 13px;
-  color: var(--sub);
-}
-
+/* 룸 카드 */
 .room-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-  gap: 14px;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 10px;
   margin-top: 16px;
 }
 
@@ -126,40 +118,74 @@ body {
   background: #fff;
   border: 1px solid var(--line);
   border-radius: 16px;
-  padding: 16px;
+  padding: 12px 14px;
   transition: 0.18s ease;
+  min-height: auto;
 }
 
 .room-card:hover {
-  transform: translateY(-2px);
+  transform: translateY(-1px);
   border-color: #b6c3d1;
+}
+
+.compact-room-card {
+  padding: 12px 14px;
 }
 
 .room-card-top {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 12px;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+
+.room-card-top strong {
+  font-size: 17px;
+  line-height: 1.2;
+}
+
+.room-clean {
+  color: var(--sub);
+  font-size: 15px;
+  white-space: nowrap;
 }
 
 .room-card-name {
-  margin-top: 10px;
-  font-size: 15px;
+  margin-top: 2px;
+  font-size: 16px;
   font-weight: 700;
-}
-
-.room-card-team,
-.room-clean,
-.muted,
-.small {
-  color: var(--sub);
+  line-height: 1.25;
 }
 
 .room-card-team {
-  margin-top: 6px;
+  margin-top: 2px;
   font-size: 14px;
+  color: var(--sub);
+  line-height: 1.2;
 }
 
+.room-spec-grid {
+  margin-top: 8px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4px 18px;
+}
+
+.room-spec-col {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  font-size: 13px;
+  color: #374151;
+  line-height: 1.3;
+}
+
+.room-spec-col div {
+  white-space: nowrap;
+}
+
+/* 입력 */
 .input,
 .select,
 .textarea {
@@ -188,6 +214,7 @@ body {
   gap: 12px;
 }
 
+/* 버튼 */
 .button {
   border: none;
   border-radius: 12px;
@@ -212,12 +239,14 @@ body {
   background: var(--danger);
 }
 
+/* 필터 */
 .filter-row {
   display: grid;
   grid-template-columns: 1fr 180px;
   gap: 12px;
 }
 
+/* 테이블 */
 .table-wrap {
   overflow-x: auto;
 }
@@ -237,6 +266,24 @@ body {
   font-size: 14px;
 }
 
+.clickable-row {
+  cursor: pointer;
+}
+
+.clickable-row:hover {
+  background: #f8fafc;
+}
+
+.table-link-button {
+  border: none;
+  background: transparent;
+  color: var(--primary);
+  font-weight: 700;
+  cursor: pointer;
+  padding: 0;
+}
+
+/* 상태 배지 */
 .badge {
   display: inline-flex;
   align-items: center;
@@ -261,6 +308,7 @@ body {
   color: var(--green-text);
 }
 
+/* 상세 / 이력 */
 .history-list {
   display: flex;
   flex-direction: column;
@@ -338,6 +386,11 @@ body {
   color: var(--sub);
 }
 
+.muted,
+.small {
+  color: var(--sub);
+}
+
 @media (max-width: 900px) {
   .topnav-inner,
   .topnav-left,
@@ -359,130 +412,13 @@ body {
   .topnav-inner {
     padding: 14px 16px;
   }
-  .clickable-row {
-  cursor: pointer;
-}
 
-.clickable-row:hover {
-  background: #f8fafc;
-}
+  .room-grid {
+    grid-template-columns: 1fr;
+  }
 
-.table-link-button {
-  border: none;
-  background: transparent;
-  color: var(--primary);
-  font-weight: 700;
-  cursor: pointer;
-  padding: 0;
-}
-
-.compact-room-card {
-  padding: 14px;
-}
-
-.room-extra-grid {
-  margin-top: 10px;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 12px;
-  font-size: 13px;
-  color: var(--sub);
-}
-
-.room-extra-col {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  min-width: 0;
-}
-
-.room-card-name {
-  margin-top: 8px;
-  font-size: 15px;
-  font-weight: 700;
-  line-height: 1.35;
-}
-
-.room-card-team {
-  margin-top: 4px;
-  font-size: 14px;
-}
-
-.room-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 10px;
-  margin-top: 16px;
-}
-
-.room-card {
-  background: #fff;
-  border: 1px solid var(--line);
-  border-radius: 16px;
-  padding: 12px 14px;
-  transition: 0.18s ease;
-  min-height: auto;
-}
-
-.room-card:hover {
-  transform: translateY(-1px);
-  border-color: #b6c3d1;
-}
-
-.compact-room-card {
-  padding: 12px 14px;
-}
-
-.room-card-top {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 8px;
-  margin-bottom: 6px;
-}
-
-.room-card-top strong {
-  font-size: 17px;
-  line-height: 1.2;
-}
-
-.room-clean {
-  color: var(--sub);
-  font-size: 15px;
-  white-space: nowrap;
-}
-
-.room-card-name {
-  margin-top: 2px;
-  font-size: 16px;
-  font-weight: 700;
-  line-height: 1.3;
-}
-
-.room-card-team {
-  margin-top: 2px;
-  font-size: 14px;
-  color: var(--sub);
-  line-height: 1.2;
-}
-
-.room-spec-grid {
-  margin-top: 8px;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 6px 18px;
-}
-
-.room-spec-col {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-  font-size: 13px;
-  color: #374151;
-  line-height: 1.35;
-}
-
-.room-spec-col div {
-  white-space: nowrap;
-}
+  .room-spec-grid {
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
 }
