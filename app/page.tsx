@@ -72,8 +72,8 @@ export default function HomePage() {
               <div className="room-card-name">{room.name}</div>
               
                 <div className="room-meta-row">
-                  <span className="room-card-team">{room.team}</span>
-                  <span className="room-card-ahu">AHU No. {room.ahu_no || "-"}</span>
+                  <div className="room-card-team">{room.team}</div>
+                  <div className="room-card-ahu">AHU No. {room.ahu_no || "-"}</div>
                 </div>
 
               <div className="room-spec-grid">
