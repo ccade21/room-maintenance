@@ -359,4 +359,59 @@ body {
   .topnav-inner {
     padding: 14px 16px;
   }
+  .clickable-row {
+  cursor: pointer;
+}
+
+.clickable-row:hover {
+  background: #f8fafc;
+}
+
+.table-link-button {
+  border: none;
+  background: transparent;
+  color: var(--primary);
+  font-weight: 700;
+  cursor: pointer;
+  padding: 0;
+}
+
+.compact-room-card {
+  padding: 14px;
+}
+
+.room-extra-grid {
+  margin-top: 10px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  font-size: 13px;
+  color: var(--sub);
+}
+
+.room-extra-col {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+.room-card-name {
+  margin-top: 8px;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+.room-card-team {
+  margin-top: 4px;
+  font-size: 14px;
+}
+
+.room-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 12px;
+  margin-top: 16px;
+}
 }

@@ -1,13 +1,14 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { supabase } from "@/lib/supabase";
 import { MaintenanceRequest, MaintenanceStatus } from "@/lib/types";
 import StatusBadge from "@/components/StatusBadge";
 import RoomSearch from "@/components/RoomSearch";
 
 export default function StatusPage() {
+  const router = useRouter();
   const [requests, setRequests] = useState<MaintenanceRequest[]>([]);
   const [loading, setLoading] = useState(true);
   const [statusFilter, setStatusFilter] = useState<"전체" | MaintenanceStatus>("전체");
@@ -48,6 +49,10 @@ export default function StatusPage() {
       return matchStatus && matchKeyword;
     });
   }, [requests, statusFilter, search]);
+
+  const handleRowClick = (roomNo: string) => {
+    router.push(`/rooms/${encodeURIComponent(roomNo)}`);
+  };
 
   return (
     <section className="page-stack">
@@ -98,7 +103,11 @@ export default function StatusPage() {
               </thead>
               <tbody>
                 {filtered.map((item) => (
-                  <tr key={item.id}>
+                  <tr
+                    key={item.id}
+                    className="clickable-row"
+                    onClick={() => handleRowClick(item.room_no)}
+                  >
                     <td>{new Date(item.created_at).toLocaleString("ko-KR")}</td>
                     <td>{item.team}</td>
                     <td>{item.room_no}</td>
@@ -108,9 +117,16 @@ export default function StatusPage() {
                     </td>
                     <td>{item.requester_name}</td>
                     <td>
-                      <Link href={`/rooms/${encodeURIComponent(item.room_no)}`}>
+                      <button
+                        type="button"
+                        className="table-link-button"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          handleRowClick(item.room_no);
+                        }}
+                      >
                         상세
-                      </Link>
+                      </button>
                     </td>
                   </tr>
                 ))}
