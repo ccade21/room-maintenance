@@ -57,35 +57,35 @@ export default function HomePage() {
       {loading ? (
         <div className="card">불러오는 중...</div>
       ) : (
-        <div className="room-grid">
+            <div className="room-grid">
           {filteredRooms.map((room) => (
-        <Link
-            key={room.id}
-            href={`/rooms/${encodeURIComponent(room.room_no)}`}
-            className="room-card compact-room-card"
-          >
-            <div className="room-card-top">
-              <strong>{room.room_no}</strong>
-              <span className="room-clean">{room.clean_class || "-"}</span>
-            </div>
-
-            <div className="room-card-name">{room.name}</div>
-            <div className="room-card-team">{room.team}</div>
-
-            <div className="room-extra-grid">
-              <div className="room-extra-col">
-                <div>온도: {room.temperature || "-"}</div>
-                <div>습도: {room.humidity || "-"}</div>
-                <div>AC/hr: {room.ac_hr || "-"}</div>
+            <Link
+              key={room.id}
+              href={`/rooms/${encodeURIComponent(room.room_no)}`}
+              className="room-card compact-room-card"
+            >
+              <div className="room-card-top">
+                <strong>{room.room_no}</strong>
+                <span className="room-clean">{room.clean_class || "-"}</span>
               </div>
 
-              <div className="room-extra-col">
-                <div>면적: {room.area || "-"}</div>
-                <div>높이: {room.height || "-"}</div>
-                <div>체적: {room.volume || "-"}</div>
+              <div className="room-card-name">{room.name}</div>
+              <div className="room-card-team">{room.team}</div>
+
+              <div className="room-spec-grid">
+                <div className="room-spec-col">
+                  <div>온도: {room.temperature || "-"}</div>
+                  <div>습도: {room.humidity || "-"}</div>
+                  <div>AC/hr: {room.ac_hr || "-"}</div>
+                </div>
+
+                <div className="room-spec-col">
+                  <div>면적: {room.area || "-"}</div>
+                  <div>높이: {room.height || "-"}</div>
+                  <div>체적: {room.volume || "-"}</div>
+                </div>
               </div>
-            </div>
-          </Link>
+            </Link>
           ))}
         </div>
       )}
