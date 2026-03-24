@@ -169,6 +169,9 @@ export default function RoomDetailPage() {
             <span>온도: {room.temperature || "-"}</span>
             <span>습도: {room.humidity || "-"}</span>
             <span>AC/hr: {room.ac_hr || "-"}</span>
+            <span>면적: {room.area || "-"}</span>
+            <span>높이: {room.height || "-"}</span>
+            <span>체적: {room.volume || "-"}</span>
             <span>
                 현재 상태:{" "}
                 {latestStatus ? (

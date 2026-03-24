@@ -75,6 +75,9 @@ export default function HomePage() {
                 <div>온도: {room.temperature || "-"}</div>
                 <div>습도: {room.humidity || "-"}</div>
                 <div>AC/hr: {room.ac_hr || "-"}</div>
+                <div>면적: {room.area || "-"}</div>
+                <div>높이: {room.height || "-"}</div>
+                <div>체적: {room.volume || "-"}</div>
               </div>
             </Link>
           ))}
