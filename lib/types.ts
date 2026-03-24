@@ -6,6 +6,9 @@ export type Room = {
   room_no: string;
   name: string;
   clean_class: string | null;
+  temperature: string | null;
+  humidity: string | null;
+  ac_hr: string | null;
   created_at?: string;
 };
 

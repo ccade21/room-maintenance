@@ -106,6 +106,15 @@ body {
   box-shadow: 0 6px 20px rgba(15, 23, 42, 0.04);
 }
 
+.room-extra {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 13px;
+  color: var(--sub);
+}
+
 .room-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));

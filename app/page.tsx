@@ -70,6 +70,12 @@ export default function HomePage() {
               </div>
               <div className="room-card-name">{room.name}</div>
               <div className="room-card-team">{room.team}</div>
+
+              <div className="room-extra">
+                <div>온도: {room.temperature || "-"}</div>
+                <div>습도: {room.humidity || "-"}</div>
+                <div>AC/hr: {room.ac_hr || "-"}</div>
+              </div>
             </Link>
           ))}
         </div>

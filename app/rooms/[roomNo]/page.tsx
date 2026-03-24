@@ -164,18 +164,21 @@ export default function RoomDetailPage() {
         <h1>{room.room_no}</h1>
         <p className="muted">{room.name}</p>
         <div className="detail-meta">
-          <span>팀: {room.team}</span>
-          <span>청정도: {room.clean_class || "-"}</span>
-          <span>
-            현재 상태:{" "}
-            {latestStatus ? (
-              <StatusBadge status={latestStatus} />
-            ) : (
-              "접수 이력 없음"
-            )}
-          </span>
-        </div>
-      </div>
+            <span>팀: {room.team}</span>
+            <span>청정도: {room.clean_class || "-"}</span>
+            <span>온도: {room.temperature || "-"}</span>
+            <span>습도: {room.humidity || "-"}</span>
+            <span>AC/hr: {room.ac_hr || "-"}</span>
+            <span>
+                현재 상태:{" "}
+                {latestStatus ? (
+                <StatusBadge status={latestStatus} />
+                ) : (
+                "접수 이력 없음"
+                )}
+            </span>
+            </div>
+         </div>
 
       <div className="card">
         <h2>고장 접수</h2>
