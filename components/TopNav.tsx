@@ -61,12 +61,12 @@ export default function TopNav() {
       <div className="topnav-inner">
         <div className="topnav-left">
           <Link href="/" className="brand">
-            유지보수 추적관리
+            Room Data Sheet
           </Link>
 
           <nav className="nav-links">
             <Link href="/">룸 목록</Link>
-            <Link href="/status">현황 리스트</Link>
+            <Link href="/status">고장 리스트</Link>
             {profile?.role === "admin" && <Link href="/admin">관리자 페이지</Link>}
           </nav>
         </div>

@@ -58,7 +58,7 @@ export default function StatusPage() {
     <section className="page-stack">
       <div className="page-header">
         <div>
-          <h1>현황 리스트</h1>
+          <h1>고장 리스트</h1>
           <p className="muted">전체 접수 이력을 상태별로 확인해요</p>
         </div>
       </div>

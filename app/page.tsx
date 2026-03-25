@@ -47,7 +47,7 @@ export default function HomePage() {
       <div className="page-header">
         <div>
           <h1>룸 목록</h1>
-          <p className="muted">룸 번호를 클릭하면 상세 페이지로 이동해요</p>
+          <p className="muted">상세 페이지로 이동</p>
         </div>
       </div>
 
